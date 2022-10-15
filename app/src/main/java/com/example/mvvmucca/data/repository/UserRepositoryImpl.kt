@@ -8,9 +8,9 @@ import com.example.mvvmucca.domain.repository.UserRepository
 private const val SHARED_PREFS_NAME = "shared_prest_name"
 private const val KEY_FIRST_NAME = "firstName"
 private const val KEY_LAST_NAME = "lastName"
-private const val DEFAULT_LAST_NAME = ""
+private const val DEFAULT_LAST_NAME = "Default name"
 
-class UserRepositoryImpl(private val context: Context) : UserRepository {
+class UserRepositoryImpl(context: Context) : UserRepository {
 
    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME,Context.MODE_PRIVATE)
 
@@ -24,12 +24,6 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
 
         val firstName = sharedPreferences.getString(KEY_FIRST_NAME,"") ?: ""
         val lastName = sharedPreferences.getString(KEY_LAST_NAME,DEFAULT_LAST_NAME) ?: DEFAULT_LAST_NAME
-
-//        val firstName = sharedPreferences.getString(KEY_FIRST_NAME,"") ?: ""
-//        if (firstName == null){ это то же самое, Элвис рулит
-//            firstName = DEFAULT_LAST_NAME
-//        }
-
         return UserName(firstName = firstName, lastName = lastName)
     }
 }

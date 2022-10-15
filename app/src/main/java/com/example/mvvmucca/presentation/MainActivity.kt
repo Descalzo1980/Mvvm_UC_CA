@@ -12,9 +12,9 @@ import com.example.mvvmucca.domain.usecase.SaveUserNameUseCase
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val userRepository = UserRepositoryImpl()
-    private val getUserNameUseCase = GetUserNameUseCase(userRepository = userRepository)
-    private val saveUserNameUseCase = SaveUserNameUseCase(userRepository = userRepository)
+    private val userRepository by lazy(LazyThreadSafetyMode.NONE) { UserRepositoryImpl(context = applicationContext)}
+    private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) { GetUserNameUseCase(userRepository = userRepository)}
+    private val saveUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) { SaveUserNameUseCase(userRepository = userRepository)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
