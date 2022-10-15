@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Mvvm UC CA</string>
-    <string name="hello_from_use_case">Hello from Use Case</string>
+    <string name="no_data">No data</string>
     <string name="put_data_here">Put data here</string>
-    <string name="save_data">Save Data</string>
-    <string name="get_data">Get Data</string>
+    <string name="save_data">Save User Data</string>
+    <string name="get_data">Get User Data</string>
 </resources>

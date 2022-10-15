@@ -2,6 +2,7 @@ package com.example.mvvmucca.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mvvmucca.data.repository.UserRepositoryImpl
 import com.example.mvvmucca.databinding.ActivityMainBinding
 import com.example.mvvmucca.domain.models.SaveUserNameParam
 import com.example.mvvmucca.domain.models.UserName
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val getUserNameUseCase = GetUserNameUseCase()
-    private val saveUserNameUseCase = SaveUserNameUseCase()
+    private val userRepository = UserRepositoryImpl()
+    private val saveUserNameUseCase = SaveUserNameUseCase(userRepository = userRepository)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
