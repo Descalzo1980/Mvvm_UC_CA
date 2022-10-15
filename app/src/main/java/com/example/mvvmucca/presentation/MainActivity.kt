@@ -12,8 +12,8 @@ import com.example.mvvmucca.domain.usecase.SaveUserNameUseCase
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val getUserNameUseCase = GetUserNameUseCase()
     private val userRepository = UserRepositoryImpl()
+    private val getUserNameUseCase = GetUserNameUseCase(userRepository = userRepository)
     private val saveUserNameUseCase = SaveUserNameUseCase(userRepository = userRepository)
 
     override fun onCreate(savedInstanceState: Bundle?) {
