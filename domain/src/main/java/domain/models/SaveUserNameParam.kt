@@ -1,3 +1,3 @@
-package com.example.mvvmucca.domain.models
+package domain.models
 
 class SaveUserNameParam (val name : String)

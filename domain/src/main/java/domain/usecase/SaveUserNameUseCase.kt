@@ -1,7 +1,7 @@
-package com.example.mvvmucca.domain.usecase
+package domain.usecase
 
-import com.example.mvvmucca.domain.models.SaveUserNameParam
-import com.example.mvvmucca.domain.repository.UserRepository
+import domain.models.SaveUserNameParam
+import domain.repository.UserRepository
 
 class SaveUserNameUseCase(private val userRepository: UserRepository) {
 
