@@ -12,7 +12,8 @@ class MainViewModel(
     private val saveUserNameUseCase : SaveUserNameUseCase
 ) : ViewModel() {
 
-    private val resultLive = MutableLiveData<String>()
+    private val resultLiveMutable = MutableLiveData<String>()
+    val resultLive : LiveData<String> = resultLiveMutable
 
 
     init {
@@ -24,18 +25,14 @@ class MainViewModel(
         super.onCleared()
     }
 
-    fun getResultLive() : LiveData<String>{
-        return resultLive
-    }
-
     fun save(text : String){
         val params = domain.models.SaveUserNameParam(name = text)
         val resultData: Boolean = saveUserNameUseCase.execute(param = params)
-        resultLive.value = "Save result = $resultData"
+        resultLiveMutable.value = "Save result = $resultData"
     }
 
     fun load(){
         val userName: domain.models.UserName = getUserNameUseCase.execute()
-        resultLive.value = "${userName.firstName} ${userName.lastName}"
+        resultLiveMutable.value = "${userName.firstName} ${userName.lastName}"
     }
 }

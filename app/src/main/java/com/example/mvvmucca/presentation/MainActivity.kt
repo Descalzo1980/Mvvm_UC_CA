@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val sendButton = binding.sendButton
         val receiveButton = binding.receiveButton
 
-        viewModel.getResultLive().observe(this) {
+        viewModel.resultLive.observe(this) {
             dataTextView.text = it
         }
 
