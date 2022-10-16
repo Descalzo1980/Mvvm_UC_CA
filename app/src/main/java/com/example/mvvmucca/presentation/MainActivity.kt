@@ -3,15 +3,15 @@ package com.example.mvvmucca.presentation
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmucca.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
 
-    private lateinit var viewModel : MainViewModel
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         Log.e("AAA", "Activity create")
-
-        viewModel = ViewModelProvider(this,MainViewModelFactory(this))[MainViewModel::class.java]
 
         val dataTextView = binding.dataTextView
         val dataEditText = binding.dataEditView
