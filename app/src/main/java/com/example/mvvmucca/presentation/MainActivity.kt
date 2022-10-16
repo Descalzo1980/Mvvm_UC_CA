@@ -1,7 +1,9 @@
 package com.example.mvvmucca.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.example.mvvmucca.databinding.ActivityMainBinding
 import com.example.mvvmucca.repository.UserRepositoryImpl
 import com.example.mvvmucca.repository.storage.sharedprefs.SharedPrefUserStorage
@@ -25,12 +27,16 @@ class MainActivity : AppCompatActivity() {
             userRepository = userRepository
         )
     }
+    private lateinit var viewModel : MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        Log.e("AAA", "Activity create")
+
+        viewModel = MainViewModel()
 
         val dataTextView = binding.dataTextView
         val dataEditText = binding.dataEditView
