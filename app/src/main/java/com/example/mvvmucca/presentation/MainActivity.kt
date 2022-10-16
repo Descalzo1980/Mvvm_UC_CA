@@ -3,7 +3,6 @@ package com.example.mvvmucca.presentation
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmucca.databinding.ActivityMainBinding
 
@@ -28,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         val sendButton = binding.sendButton
         val receiveButton = binding.receiveButton
 
-        viewModel.resultLive.observe(this, Observer{
+        viewModel.getResultLive().observe(this) {
             dataTextView.text = it
-        })
+        }
 
         sendButton.setOnClickListener {
             val text = dataEditText.text.toString()

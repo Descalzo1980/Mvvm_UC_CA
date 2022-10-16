@@ -1,10 +1,9 @@
 package com.example.mvvmucca.presentation
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvmucca.repository.UserRepositoryImpl
-import com.example.mvvmucca.repository.storage.sharedprefs.SharedPrefUserStorage
 import domain.usecase.GetUserNameUseCase
 import domain.usecase.SaveUserNameUseCase
 
@@ -13,7 +12,7 @@ class MainViewModel(
     private val saveUserNameUseCase : SaveUserNameUseCase
 ) : ViewModel() {
 
-    var resultLive = MutableLiveData<String>()
+    private val resultLive = MutableLiveData<String>()
 
 
     init {
@@ -23,6 +22,10 @@ class MainViewModel(
     override fun onCleared() {
         Log.e("AAA", "VM create")
         super.onCleared()
+    }
+
+    fun getResultLive() : LiveData<String>{
+        return resultLive
     }
 
     fun save(text : String){
