@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.example.mvvmucca.databinding.ActivityMainBinding
 import com.example.mvvmucca.repository.UserRepositoryImpl
 import com.example.mvvmucca.repository.storage.sharedprefs.SharedPrefUserStorage
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         Log.e("AAA", "Activity create")
 
-        viewModel = MainViewModel()
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val dataTextView = binding.dataTextView
         val dataEditText = binding.dataEditView
